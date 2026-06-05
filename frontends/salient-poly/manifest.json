@@ -1,0 +1,9 @@
+{
+  "name": "Salient Polygon Annotator",
+  "task_type": "salient_poly",
+  "version": "0.2.7",
+  "root": "salient-poly/dist",
+  "css": ["assets/index.css"],
+  "js": ["assets/index.js"],
+  "result_schema_version": "2.0.0"
+}

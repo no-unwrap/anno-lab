@@ -1,0 +1,46 @@
+.bbox-overlay {
+  cursor: crosshair;
+  user-select: none;
+  touch-action: none;
+}
+
+.bbox-overlay--select {
+  cursor: default;
+}
+
+.bbox-overlay svg {
+  width: 100%;
+  height: 100%;
+}
+
+.bbox-box {
+  fill: rgba(17, 100, 102, 0.12);
+  stroke: rgba(17, 100, 102, 0.92);
+  stroke-width: 2.4;
+}
+
+.bbox-box.is-selected {
+  fill: rgba(242, 143, 22, 0.16);
+  stroke: #f28f16;
+}
+
+.bbox-box--draft {
+  stroke-dasharray: 8 5;
+}
+
+.bbox-box__label {
+  fill: #14231f;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.bbox-handle {
+  fill: #fdfcf8;
+  stroke: #14231f;
+  stroke-width: 1.6;
+}
+
+.bbox-detail-list {
+  margin-top: 1rem;
+}

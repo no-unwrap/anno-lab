@@ -1,0 +1,13 @@
+{
+  "name": "Pose Keypoints Annotator",
+  "task_type": "pose_keypoints",
+  "version": "0.1.5",
+  "root": "pose-keypoints/dist",
+  "css": [
+    "assets/index.css"
+  ],
+  "js": [
+    "assets/index.js"
+  ],
+  "result_schema_version": "1.0.0"
+}

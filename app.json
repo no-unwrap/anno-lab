@@ -1,0 +1,87 @@
+{
+  "name": "anno-lab",
+  "description": "Human-in-the-loop annotation platform for long-lived research datasets",
+  "keywords": [
+    "annotation",
+    "machine-learning",
+    "computer-vision",
+    "mturk",
+    "research"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    },
+    "worker": {
+      "quantity": 1,
+      "size": "basic"
+    },
+    "beat": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:mini"
+    },
+    {
+      "plan": "heroku-redis:mini"
+    }
+  ],
+  "env": {
+    "DJANGO_SECRET_KEY": {
+      "description": "Django secret key for cryptographic signing",
+      "generator": "secret"
+    },
+    "DJANGO_DEBUG": {
+      "description": "Enable Django debug mode (0 for production)",
+      "value": "0"
+    },
+    "DJANGO_ALLOWED_HOSTS": {
+      "description": "Comma-separated list of allowed hosts",
+      "value": "*"
+    },
+    "DJANGO_WRITE_TOKEN": {
+      "description": "API write protection token",
+      "generator": "secret"
+    },
+    "USE_S3_PLUGINS": {
+      "description": "Enable S3 plugin storage (1 for production)",
+      "value": "1"
+    },
+    "S3_BUCKET": {
+      "description": "S3 bucket for asset and plugin storage",
+      "required": false
+    },
+    "AWS_REGION": {
+      "description": "AWS region",
+      "value": "us-east-1"
+    },
+    "AWS_ACCESS_KEY_ID": {
+      "description": "AWS access key",
+      "required": false
+    },
+    "AWS_SECRET_ACCESS_KEY": {
+      "description": "AWS secret key",
+      "required": false
+    },
+    "MTURK_SANDBOX": {
+      "description": "Use MTurk sandbox (1 for testing)",
+      "value": "1"
+    },
+    "PUBLIC_BASE_URL": {
+      "description": "Public base URL for callbacks",
+      "required": true
+    }
+  },
+  "scripts": {
+    "postdeploy": "cd backend && python manage.py migrate"
+  }
+}

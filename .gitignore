@@ -1,0 +1,95 @@
+# ======================
+# Python / Django
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+.env
+.env.*
+!.env.example
+
+*.log
+*.sqlite3
+
+# Django
+staticfiles/
+media/
+local_settings.py
+
+# Celery
+celerybeat-schedule
+celerybeat-schedule.db
+celerybeat.pid
+
+# ======================
+# Migrations cache
+# ======================
+**/migrations/__pycache__/
+
+# ======================
+# Virtual environments
+# ======================
+.venv/
+venv/
+env/
+ENV/
+
+# ======================
+# Docker
+# ======================
+**/.dockerignore
+**/.DS_Store
+
+# Docker volumes (if accidentally created locally)
+pgdata/
+postgres-data/
+
+# ======================
+# Node / Frontend (React plugins)
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+dist/
+build/
+
+# Keep source + manifests, ignore compiled artifacts except example if desired
+# If you want to keep example-bbox/dist checked in, comment out the above "dist/"
+
+# ======================
+# IDEs / Editors
+# ======================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================
+# OS
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# Testing / Coverage
+# ======================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ======================
+# Temporary / Scratch
+# ======================
+tmp/
+scratch/
+*.egg-info/
+notes.local.md
+
+# Obsidian
+.obsidian/

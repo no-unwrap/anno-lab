@@ -1,0 +1,81 @@
+# Render.com deployment configuration
+# https://render.com/docs/blueprint-spec
+
+services:
+  # Django web application
+  - type: web
+    name: anno-lab-web
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: 0
+      - key: DJANGO_ALLOWED_HOSTS
+        value: "*"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: anno-lab-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: anno-lab-redis
+          property: connectionString
+      - key: PUBLIC_BASE_URL
+        fromService:
+          type: web
+          name: anno-lab-web
+          property: host
+    healthCheckPath: /api/health/
+    autoDeploy: true
+
+  # Celery worker
+  - type: worker
+    name: anno-lab-worker
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: celery -A anno_lab worker -l INFO -Q default,mturk --workdir backend
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: anno-lab-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: anno-lab-redis
+          property: connectionString
+    autoDeploy: true
+
+  # Celery beat scheduler
+  - type: worker
+    name: anno-lab-beat
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    dockerCommand: celery -A anno_lab beat -l INFO --workdir backend
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: anno-lab-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: anno-lab-redis
+          property: connectionString
+    autoDeploy: true
+
+  - type: redis
+    name: anno-lab-redis
+    plan: starter  # $10/month
+    maxmemoryPolicy: noeviction
+
+databases:
+  - name: anno-lab-db
+    databaseName: anno_lab
+    plan: starter  # $7/month

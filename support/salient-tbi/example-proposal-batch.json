@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "task_type": "salient_tbi",
+  "provider": "sam2.1",
+  "checkpoint": "sam2.1-hiera-small",
+  "run_id": "pilot-run-001",
+  "proposals": [
+    {
+      "task_id": 101,
+      "proposal_id": "proposal-101",
+      "score": 0.91,
+      "polygon": [
+        { "x": 100.0, "y": 140.0 },
+        { "x": 300.0, "y": 150.0 },
+        { "x": 260.0, "y": 360.0 },
+        { "x": 120.0, "y": 320.0 }
+      ]
+    }
+  ]
+}

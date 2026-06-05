@@ -1,0 +1,13 @@
+{
+  "name": "Instance Bounding Box Annotator",
+  "task_type": "instance_bbox",
+  "version": "0.1.5",
+  "root": "instance-bbox/dist",
+  "css": [
+    "assets/index.css"
+  ],
+  "js": [
+    "assets/index.js"
+  ],
+  "result_schema_version": "1.0.0"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Salient TBI Annotator",
+  "task_type": "salient_tbi",
+  "version": "0.1.0",
+  "root": "salient-tbi/dist",
+  "css": [
+    "assets/index.css"
+  ],
+  "js": [
+    "assets/index.js"
+  ],
+  "result_schema_version": "1.0.0"
+}

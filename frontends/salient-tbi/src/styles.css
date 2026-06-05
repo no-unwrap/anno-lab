@@ -1,0 +1,122 @@
+.salient-tbi-workspace {
+  display: grid;
+  gap: 1rem;
+}
+
+.salient-tbi-stage.is-report-step .anno-lab-stage__media {
+  filter: saturate(0.95) brightness(0.92);
+}
+
+.salient-tbi-overlay {
+  cursor: crosshair;
+  user-select: none;
+  touch-action: none;
+}
+
+.salient-tbi-overlay.is-disabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.salient-tbi-overlay svg {
+  width: 100%;
+  height: 100%;
+}
+
+.salient-tbi-seed {
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.salient-tbi-seed.is-preview {
+  fill: rgba(17, 100, 102, 0.12);
+  stroke: rgba(17, 100, 102, 0.88);
+  stroke-dasharray: 8 6;
+}
+
+.salient-tbi-seed.is-accepted {
+  fill: rgba(29, 122, 75, 0.16);
+  stroke: rgba(29, 122, 75, 0.92);
+}
+
+.salient-tbi-point-marker__pulse {
+  fill: rgba(242, 143, 22, 0.16);
+  stroke: none;
+}
+
+.salient-tbi-point-marker__ring {
+  fill: rgba(253, 252, 248, 0.85);
+  stroke: #cf5f19;
+  stroke-width: 2.4;
+}
+
+.salient-tbi-point-marker__core {
+  fill: #cf5f19;
+  stroke: #fdfcf8;
+  stroke-width: 1.4;
+}
+
+.salient-tbi-panel-copy {
+  margin: 0;
+  color: var(--anno-lab-text-muted);
+}
+
+.salient-tbi-callout {
+  margin-top: 0.9rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(20, 35, 31, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.salient-tbi-callout--proposal {
+  border-color: rgba(17, 100, 102, 0.24);
+  background: rgba(17, 100, 102, 0.08);
+}
+
+.salient-tbi-callout strong,
+.salient-tbi-selection-summary strong,
+.salient-tbi-question-block strong {
+  display: block;
+}
+
+.salient-tbi-callout p,
+.salient-tbi-selection-summary p {
+  margin: 0.3rem 0 0;
+  color: var(--anno-lab-text-muted);
+}
+
+.salient-tbi-selection-summary {
+  margin-top: 0.9rem;
+  padding: 0.9rem 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 1px solid var(--anno-lab-border);
+}
+
+.salient-tbi-inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.9rem;
+}
+
+.salient-tbi-inline-actions .anno-lab-button {
+  flex: 1 1 180px;
+}
+
+.salient-tbi-cap-note {
+  margin: 0.85rem 0 0;
+  color: var(--anno-lab-warning);
+}
+
+.salient-tbi-question-block + .salient-tbi-question-block {
+  margin-top: 1rem;
+}
+
+.salient-tbi-pill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+}

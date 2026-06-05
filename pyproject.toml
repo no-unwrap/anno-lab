@@ -1,0 +1,87 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "anno-lab"
+version = "0.1.0"
+description = "Human-in-the-loop annotation platform for long-lived research datasets"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "anno-lab Maintainers"}
+]
+keywords = ["annotation", "machine-learning", "computer-vision", "mturk", "crowdsourcing", "research"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Framework :: Django",
+    "Framework :: Celery",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "click>=8.1,<9.0",
+    "Django>=5.0,<6.0",
+    "djangorestframework>=3.15,<4.0",
+    "drf-spectacular>=0.28,<1.0",
+    "psycopg[binary]>=3.1,<4.0",
+    "celery>=5.4,<6.0",
+    "redis>=5.0,<6.0",
+    "boto3>=1.34,<2.0",
+    "python-dotenv>=1.0,<2.0",
+    "django-cors-headers>=4.3,<5.0",
+    "gunicorn>=22.0,<23.0",
+    "django-ratelimit>=4.1,<5.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-django>=4.5",
+    "black>=23.0",
+    "ruff>=0.11,<1.0",
+    "radon>=6.0,<7.0",
+]
+
+[project.scripts]
+anno-lab = "anno_lab.cli:main"
+
+[tool.black]
+line-length = 100
+target-version = ['py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+  | migrations
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+extend-exclude = ["backend/core/migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E203", "E501"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "anno_lab.test_settings"
+python_files = ["test_*.py", "*_test.py"]
+testpaths = ["backend/core/tests"]
+addopts = "--tb=short --strict-markers"

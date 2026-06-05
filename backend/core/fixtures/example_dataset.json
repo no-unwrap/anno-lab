@@ -1,0 +1,402 @@
+[
+  {
+    "model": "core.project",
+    "pk": 1,
+    "fields": {
+      "slug": "example-classification",
+      "name": "Example Image Classification Project",
+      "description": "A sample project demonstrating binary image classification tasks",
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 2,
+    "fields": {
+      "slug": "example-bbox",
+      "name": "Example Bounding Box Project",
+      "description": "A sample project demonstrating object detection with bounding boxes",
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 3,
+    "fields": {
+      "slug": "example-polygon",
+      "name": "Example Polygon Annotation Project",
+      "description": "A sample project demonstrating salient polygon annotation",
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.tasktype",
+    "pk": 1,
+    "fields": {
+      "slug": "binary-classification",
+      "name": "Binary Classification",
+      "description": "Simple yes/no classification tasks"
+    }
+  },
+  {
+    "model": "core.tasktype",
+    "pk": 2,
+    "fields": {
+      "slug": "bbox-annotation",
+      "name": "Bounding Box Annotation",
+      "description": "Draw bounding boxes around objects of interest"
+    }
+  },
+  {
+    "model": "core.tasktype",
+    "pk": 3,
+    "fields": {
+      "slug": "salient-polygon",
+      "name": "Salient Polygon Annotation",
+      "description": "Draw polygons around salient objects in images"
+    }
+  },
+  {
+    "model": "core.taskdefinition",
+    "pk": 1,
+    "fields": {
+      "task_type": 1,
+      "version": "1.0.0",
+      "definition": {
+        "question": "Does this image contain a cat?",
+        "options": ["yes", "no"],
+        "instructions": "Select 'yes' if you see a cat anywhere in the image, otherwise select 'no'."
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.taskdefinition",
+    "pk": 2,
+    "fields": {
+      "task_type": 2,
+      "version": "1.0.0",
+      "definition": {
+        "object_classes": ["person", "vehicle", "animal"],
+        "min_box_size": 10,
+        "instructions": "Draw tight bounding boxes around all visible objects. Use the appropriate class label for each box."
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.taskdefinition",
+    "pk": 3,
+    "fields": {
+      "task_type": 3,
+      "version": "1.0.0",
+      "definition": {
+        "instructions": "Draw polygons around each salient object in the image. Click to add points, then click the first point or press Enter to close each polygon.",
+        "min_points": 3
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.asset",
+    "pk": 1,
+    "fields": {
+      "project": 1,
+      "media_type": "image",
+      "s3_key": "examples/classification/cat_001.jpg",
+      "sha256": "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+      "width": 800,
+      "height": 600,
+      "metadata": {
+        "source": "example_dataset",
+        "category": "animals"
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.asset",
+    "pk": 2,
+    "fields": {
+      "project": 1,
+      "media_type": "image",
+      "s3_key": "examples/classification/landscape_001.jpg",
+      "sha256": "b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3",
+      "width": 1024,
+      "height": 768,
+      "metadata": {
+        "source": "example_dataset",
+        "category": "nature"
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.asset",
+    "pk": 3,
+    "fields": {
+      "project": 2,
+      "media_type": "image",
+      "s3_key": "examples/detection/street_scene_001.jpg",
+      "sha256": "c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+      "width": 1920,
+      "height": 1080,
+      "metadata": {
+        "source": "example_dataset",
+        "category": "urban"
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.asset",
+    "pk": 4,
+    "fields": {
+      "project": 2,
+      "media_type": "image",
+      "s3_key": "examples/detection/parking_lot_001.jpg",
+      "sha256": "d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5",
+      "width": 1280,
+      "height": 720,
+      "metadata": {
+        "source": "example_dataset",
+        "category": "urban"
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.asset",
+    "pk": 5,
+    "fields": {
+      "project": 3,
+      "media_type": "image",
+      "s3_key": "examples/polygon/object_001.jpg",
+      "sha256": "e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6",
+      "width": 800,
+      "height": 600,
+      "metadata": {
+        "source": "example_dataset",
+        "category": "objects"
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.asset",
+    "pk": 6,
+    "fields": {
+      "project": 3,
+      "media_type": "image",
+      "s3_key": "examples/polygon/object_002.jpg",
+      "sha256": "f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1",
+      "width": 800,
+      "height": 600,
+      "metadata": {
+        "source": "example_dataset",
+        "category": "objects"
+      },
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.task",
+    "pk": 1,
+    "fields": {
+      "project": 1,
+      "asset": 1,
+      "task_definition": 1,
+      "status": "complete",
+      "priority": 1,
+      "assigned_to": "",
+      "payload": {},
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.task",
+    "pk": 2,
+    "fields": {
+      "project": 1,
+      "asset": 2,
+      "task_definition": 1,
+      "status": "pending",
+      "priority": 1,
+      "assigned_to": "",
+      "payload": {},
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.task",
+    "pk": 3,
+    "fields": {
+      "project": 2,
+      "asset": 3,
+      "task_definition": 2,
+      "status": "complete",
+      "priority": 1,
+      "assigned_to": "",
+      "payload": {},
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.task",
+    "pk": 4,
+    "fields": {
+      "project": 2,
+      "asset": 4,
+      "task_definition": 2,
+      "status": "pending",
+      "priority": 1,
+      "assigned_to": "",
+      "payload": {},
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.task",
+    "pk": 5,
+    "fields": {
+      "project": 3,
+      "asset": 5,
+      "task_definition": 3,
+      "status": "complete",
+      "priority": 1,
+      "assigned_to": "",
+      "payload": {},
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.task",
+    "pk": 6,
+    "fields": {
+      "project": 3,
+      "asset": 6,
+      "task_definition": 3,
+      "status": "pending",
+      "priority": 1,
+      "assigned_to": "",
+      "payload": {},
+      "created_at": "2024-01-15T10:00:00Z"
+    }
+  },
+  {
+    "model": "core.annotation",
+    "pk": 1,
+    "fields": {
+      "task": 1,
+      "result": {
+        "answer": "yes",
+        "confidence": "high"
+      },
+      "schema_version": "1.0.0",
+      "tool_version": "1.0.0",
+      "actor": "demo_annotator_1",
+      "submission_id": "example_submission_001",
+      "assignment": null,
+      "raw_payload": {
+        "answer": "yes",
+        "confidence": "high",
+        "time_spent_ms": 3500
+      },
+      "created_at": "2024-01-15T11:00:00Z"
+    }
+  },
+  {
+    "model": "core.annotation",
+    "pk": 2,
+    "fields": {
+      "task": 3,
+      "result": {
+        "boxes": [
+          {
+            "class": "person",
+            "x": 100,
+            "y": 150,
+            "width": 80,
+            "height": 200,
+            "confidence": 0.95
+          },
+          {
+            "class": "vehicle",
+            "x": 400,
+            "y": 300,
+            "width": 150,
+            "height": 100,
+            "confidence": 0.88
+          }
+        ]
+      },
+      "schema_version": "1.0.0",
+      "tool_version": "1.0.0",
+      "actor": "demo_annotator_2",
+      "submission_id": "example_submission_002",
+      "assignment": null,
+      "raw_payload": {
+        "boxes": [
+          {
+            "class": "person",
+            "x": 100,
+            "y": 150,
+            "width": 80,
+            "height": 200,
+            "confidence": 0.95
+          },
+          {
+            "class": "vehicle",
+            "x": 400,
+            "y": 300,
+            "width": 150,
+            "height": 100,
+            "confidence": 0.88
+          }
+        ],
+        "time_spent_ms": 12000
+      },
+      "created_at": "2024-01-15T11:30:00Z"
+    }
+  },
+  {
+    "model": "core.annotation",
+    "pk": 3,
+    "fields": {
+      "task": 5,
+      "result": {
+        "polygon": {
+          "points": [
+            {"x": 200, "y": 100},
+            {"x": 350, "y": 120},
+            {"x": 400, "y": 250},
+            {"x": 350, "y": 380},
+            {"x": 200, "y": 400},
+            {"x": 150, "y": 250}
+          ],
+          "label": "primary_object"
+        }
+      },
+      "schema_version": "1.0.0",
+      "tool_version": "1.0.0",
+      "actor": "demo_annotator_1",
+      "submission_id": "example_submission_003",
+      "assignment": null,
+      "raw_payload": {
+        "polygon": {
+          "points": [
+            {"x": 200, "y": 100},
+            {"x": 350, "y": 120},
+            {"x": 400, "y": 250},
+            {"x": 350, "y": 380},
+            {"x": 200, "y": 400},
+            {"x": 150, "y": 250}
+          ],
+          "label": "primary_object"
+        },
+        "time_spent_ms": 8500
+      },
+      "created_at": "2024-01-15T12:00:00Z"
+    }
+  }
+]
